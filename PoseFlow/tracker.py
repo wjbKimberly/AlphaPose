@@ -60,6 +60,7 @@ if __name__ == '__main__':
     dataset = args.dataset
             
     anno_dir = "./posetrack_data/annotations/{}".format(dataset)
+    print(anno_dir)
     notrack_json = "alpha-pose-results-{}.json".format(dataset) 
     track_dir = "{}-predict".format(dataset) # results dir name
        
@@ -78,7 +79,6 @@ if __name__ == '__main__':
             
             if 'crop' in imgpath:
                 vname,fname = imgpath[:-18],imgpath[-17:]
-                print(imgpath,vname,fname)
                 continue
 
             vname,fname = imgpath[:-13],imgpath[-12:]
@@ -123,7 +123,6 @@ if __name__ == '__main__':
 
             max_pid_id = max(max_pid_id, track[video_name][frame_name]['num_boxes'])
             cor_file = os.path.join(image_dir, video_name, "".join([frame_id, '_', next_frame_id, '.txt']))
-
             # regenerate the missed pair-matching txt
             if not os.path.exists(cor_file):
                 
